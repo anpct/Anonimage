@@ -9,3 +9,4 @@ class Item(models.Model):
     score = models.IntegerField(default=0)
     verified = models.BooleanField(default=False)
     date_posted  = models.DateField(default=datetime.now)
+    accepted = models.BooleanField()
