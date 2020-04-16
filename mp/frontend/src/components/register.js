@@ -20,7 +20,7 @@ export class Register extends Component {
 
       onSubmit = (e) =>{
           e.preventDefault();
-          this.props.register(this.state.username, this.state.email, this.state.password);
+          this.props.register(this.state.username, this.state.email, this.state.password, this.state.password2);
       }
     
       onChange = (e) => this.setState({ [e.target.name]: e.target.value });

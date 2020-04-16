@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_FAIL, LOGIN_SUCCESS, REGISTRATION_FAIL, REGISTRATION_SUCCESS} from './types';
+import { USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_FAIL, LOGIN_SUCCESS, REGISTRATION_FAIL, REGISTRATION_SUCCESS, GET_ERRORS} from './types';
 
 export const loadUser = () => (dispatch, getState) =>{
     dispatch({type: USER_LOADING});
@@ -53,17 +53,37 @@ export const login = (username, password) => (dispatch) =>{
           dispatch({
             type: LOGIN_FAIL,
           });
+          const error ={
+            msg: err.response.data,
+            status: err.response.status
+          };
+          dispatch({
+            type: GET_ERRORS,
+            payload: error
+          });
         })
     
 } 
 
-export const register = (username, email, password) => (dispatch) =>{
+export const register = (username, email, password, password2) => (dispatch) =>{
   
   const config = {
     headers: {
       'Content-Type': 'application/json',
     },
   };
+
+  if( password !== password2){
+    const error ={
+      msg: { mismatch: 'password mismatch'},
+      status: null
+    };
+    dispatch({
+      type: GET_ERRORS,
+      payload: error
+    });
+    return;
+  }
 
   const body = JSON.stringify({ username, email, password });
 
@@ -78,6 +98,14 @@ export const register = (username, email, password) => (dispatch) =>{
   .catch((err) => {
     dispatch({
       type: REGISTRATION_FAIL,
+    });
+    const error ={
+      msg: err.response.data,
+      status: err.response.status
+    };
+    dispatch({
+      type: GET_ERRORS,
+      payload: error
     });
   })
 

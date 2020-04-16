@@ -45,6 +45,7 @@ render(){
               onChange={this.onChange}
               multiple={false}
               accept=".jpg,.png,.jpeg"
+              required
             />
           </div>
           <div className="form-group">

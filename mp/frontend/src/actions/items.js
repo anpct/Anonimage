@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ITEMS, ADD_ITEM, DELETE_ITEM } from './types';
+import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, GET_ERRORS } from './types';
 import { tokenConfig } from './auth';
 
 
@@ -44,7 +44,17 @@ axios.post('/api/items/', formData, config)
                 payload: res.data
             })
         })
-    .catch(err => console.log(err))
+    .catch(err => {
+        const errors = {
+        msg: err.response.data,
+        status: err.response.status
+    }
+    console.log(err.response.data)
+    dispatch({
+        type: GET_ERRORS,
+        payload: errors
+    })}
+    )
 }
 
 // DELETE ITEM

@@ -6,9 +6,17 @@ import Navbar from './navbar';
 import Home from './home';
 import Login from './login';
 import Register from './register';
+import Alerts from './alerts';
 import { HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import PrivateRoute from './privateroute';
 import { loadUser } from '../actions/auth'
+import { Provider as AlertProvider } from 'react-alert';
+import AlertTemplate from 'react-alert-template-basic';
+
+const alertOptions = {
+  timeout: 5000,
+  position: 'top center'
+}
 
 class App extends Component {
 
@@ -19,9 +27,11 @@ class App extends Component {
   render() {
     return (
       <Provider store = {store}>
+      <AlertProvider template={AlertTemplate} {...alertOptions}>
       <Fragment>
       <Router >
       <Navbar/>
+      <Alerts/>
       <Switch>
         <PrivateRoute exact path='/' component={Home}/>
         <Route exact path='/login' component={Login}/>
@@ -29,6 +39,7 @@ class App extends Component {
       </Switch>
      </Router>
      </Fragment>
+     </AlertProvider>
      </Provider>
     );
   }
