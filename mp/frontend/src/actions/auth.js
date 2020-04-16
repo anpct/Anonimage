@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_FAIL, LOGIN_SUCCESS, REGISTRATION_FAIL, REGISTRATION_SUCCESS, GET_ERRORS} from './types';
+import { USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_FAIL, LOGIN_SUCCESS, REGISTRATION_FAIL, REGISTRATION_SUCCESS, GET_ERRORS, LOGOUT_USER, CLEAR_DATA} from './types';
 
 export const loadUser = () => (dispatch, getState) =>{
     dispatch({type: USER_LOADING});
@@ -15,10 +15,10 @@ export const loadUser = () => (dispatch, getState) =>{
     if(token){
         config.header['Authorization'] = `Token ${token}`;
     }
-    axios.get('/auth/user/', config)
+    axios.get('/auth/user/', tokenConfig(getState))
         .then(res => {
             dispatch({
-                type: USER_LOADING,
+                type: USER_LOADED,
                 payload: res.data
             })
         })
@@ -109,6 +109,21 @@ export const register = (username, email, password, password2) => (dispatch) =>{
     });
   })
 
+}
+
+export const logout = () => (dispatch, getState) =>{
+  axios.post('/auth/logout/', null, tokenConfig(getState))
+    .then(
+      res =>{
+      dispatch({
+        type: LOGOUT_USER
+      });
+      dispatch({
+        type: CLEAR_DATA
+      });
+    }
+    )
+    .catch(err=>{console.log(err)})
 }
 
 export const tokenConfig = (getState) => {

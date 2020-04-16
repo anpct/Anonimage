@@ -9,4 +9,6 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 export const REGISTRATION_SUCCESS = "REGISTRATION_SUCCESS";
 export const REGISTRATION_FAIL = "REGISTRATION_FAIL";
 export const GET_ERRORS = "GET_ERRORS";
-export const GET_MESSAGES = "GET_MESSAGES"
+export const GET_MESSAGES = "GET_MESSAGES";
+export const LOGOUT_USER = "LOGOUT_USER";
+export const CLEAR_DATA = "CLEAR_DATA";

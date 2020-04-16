@@ -7,6 +7,7 @@ import Home from './home';
 import Login from './login';
 import Register from './register';
 import Alerts from './alerts';
+import Admin from './Admin';
 import { HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import PrivateRoute from './privateroute';
 import { loadUser } from '../actions/auth'
@@ -34,6 +35,7 @@ class App extends Component {
       <Alerts/>
       <Switch>
         <PrivateRoute exact path='/' component={Home}/>
+        <PrivateRoute exact path='/admin' component={Admin}/>
         <Route exact path='/login' component={Login}/>
         <Route exact path='/register' component={Register}/>
       </Switch>

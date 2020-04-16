@@ -6,7 +6,8 @@ import PropTypes from 'prop-types'
 export class Alerts extends Component {
 
     static propTypes ={
-        error: PropTypes.object.isRequired
+        error: PropTypes.object.isRequired,
+        messages: PropTypes.object.isRequired
     }
 
     componentDidUpdate(prevProps){

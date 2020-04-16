@@ -1,10 +1,11 @@
-import { USER_LOADING, USER_LOADED, AUTH_ERROR, LOGIN_FAIL, LOGIN_SUCCESS, REGISTRATION_FAIL, REGISTRATION_SUCCESS} from '../actions/types'
+import { USER_LOADING, USER_LOADED, AUTH_ERROR, LOGIN_FAIL, LOGIN_SUCCESS, REGISTRATION_FAIL, REGISTRATION_SUCCESS, LOGOUT_USER} from '../actions/types'
 
 const initialState = {
     token: localStorage.getItem('token'),
     isAuthenticated: null,
     isLoading: false,
-    user: null
+    user: null,
+    admin: null
 }
 
 export default function(state = initialState, action){
@@ -30,7 +31,8 @@ export default function(state = initialState, action){
                 token: null,
                 isAuthenticated: false,
                 isLoading: false,
-                user: null
+                user: null,
+                admin: null
             }
 
         case LOGIN_FAIL:
@@ -40,7 +42,8 @@ export default function(state = initialState, action){
                 token: null,
                 isAuthenticated: false,
                 isLoading: false,
-                user: null
+                user: null,
+                admin: null
             }
         
         case LOGIN_SUCCESS:
@@ -70,6 +73,17 @@ export default function(state = initialState, action){
                 isAuthenticated: true,
                 isLoading: false
             }
+        
+        case LOGOUT_USER:
+            localStorage.removeItem('token')
+            return{
+                ...state,
+                token: null,
+                isAuthenticated: false,
+                isLoading: false,
+                user: null
+            }
+        
 
         default:
             return state
