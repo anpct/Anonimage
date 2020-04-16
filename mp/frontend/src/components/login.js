@@ -24,13 +24,9 @@ export class Login extends Component {
       onChange = (e) => this.setState({ [e.target.name]: e.target.value });
     
       render() {
-        if(this.props.isAuthenticated && !this.props.admin)
+        if(this.props.isAuthenticated)
         {
           return <Redirect to="/"/>
-        }
-        if(this.props.isAuthenticated && this.props.admin)
-        {
-          return <Redirect to="/admin"/>
         }
         const { username, password } = this.state;
         return (
@@ -74,8 +70,7 @@ export class Login extends Component {
 }
 
 const mapStateToProps = state =>({
-  isAuthenticated: state.auth.isAuthenticated,
-  admin: state.auth.admin
+  isAuthenticated: state.auth.isAuthenticated
 })
 
 export default connect(mapStateToProps, {login})(Login)

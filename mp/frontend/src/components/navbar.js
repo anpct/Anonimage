@@ -12,7 +12,7 @@ static propTypes ={
 }
 render(){
     return(
-        <nav className="navbar navbar-expand-sm navbar-light bg-light">
+        <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
         <div className="container">
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
@@ -20,16 +20,16 @@ render(){
         <a className="navbar-brand" href="#">ANP</a>
       { this.props.isAuthenticated?
         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
-          <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+          <ul className="navbar-nav ml-auto">
             <li className="nav-item active">
-            <button onClick={this.props.logout} className="nav-link btn btn-info btn-sm text-light">
+            <button onClick={this.props.logout} className="btn btn-link">
             Logout
           </button>
             </li>
           </ul>
         </div>:
         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
-          <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+          <ul className="navbar-nav ml-auto">
             <li className="nav-item active">
               <Link to='/register' className="nav-link">Register</Link>
             </li>
