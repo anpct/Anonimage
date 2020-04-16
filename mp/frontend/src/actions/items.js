@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, GET_ERRORS } from './types';
+import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, GET_ERRORS, GET_MESSAGES } from './types';
 import { tokenConfig } from './auth';
 
 
@@ -42,7 +42,12 @@ axios.post('/api/items/', formData, config)
             dispatch({
                 type: ADD_ITEM,
                 payload: res.data
-            })
+            });
+
+            dispatch({
+                type: GET_MESSAGES,
+                payload: "ITEM ADDED"
+            });
         })
     .catch(err => {
         const errors = {
@@ -66,7 +71,12 @@ axios.delete(`/api/items/${id}/`, tokenConfig(getState))
             dispatch({
                 type: DELETE_ITEM,
                 payload: id
-            })
+            });
+
+            dispatch({
+                type: GET_MESSAGES,
+                payload: "ITEM DELETED"
+            });
         })
     .catch(err => console.log(err))
 }

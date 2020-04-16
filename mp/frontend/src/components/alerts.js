@@ -10,13 +10,17 @@ export class Alerts extends Component {
     }
 
     componentDidUpdate(prevProps){
-        const { error, alert } = this.props;
+        const { error, alert, messages } = this.props;
         if(error !== prevProps.error){
         if (error.msg.item) alert.error(error.msg.item.join());
         if (error.msg.non_field_errors) alert.error(error.msg.non_field_errors.join());
         if (error.msg.username) alert.error(error.msg.username.join());
         if (error.msg.email) alert.error(error.msg.email.join());
         if (error.msg.mismatch) alert.error(error.msg.mismatch);
+        }
+
+        if(messages !== prevProps.messages){
+        alert.success(messages.msg);
         }
     }
 
@@ -28,7 +32,8 @@ export class Alerts extends Component {
 }
 
 const mapStateToProps = (state) =>({
-    error: state.errors
+    error: state.errors,
+    messages: state.messages
 });
 
 export default connect(mapStateToProps)(withAlert()(Alerts));
