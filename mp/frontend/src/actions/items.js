@@ -1,10 +1,12 @@
 import axios from 'axios';
-import { GET_ITEMS, ADD_ITEM } from './types';
+import { GET_ITEMS, ADD_ITEM, DELETE_ITEM } from './types';
+import { tokenConfig } from './auth';
+
 
 // GET ITEMS
 
-export const getItems = () => dispatch =>{
-axios.get('/api/items/')
+export const getItems = () => (dispatch, getState) =>{
+axios.get('/api/items/', tokenConfig(getState))
     .then(res=>
         {
             dispatch({
@@ -17,8 +19,24 @@ axios.get('/api/items/')
 
 // ADD ITEM
 
-export const addItem = () => dispatch =>{
-axios.post('/api/items/')
+export const addItem = (item) => (dispatch, getState) =>{
+    const token = getState().auth.token;
+
+
+    const config = {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      };
+      if (token) {
+        config.headers['Authorization'] = `Token ${token}`;
+      }
+      console.log(token)
+
+      const formData = new FormData();
+      formData.append('item',item);
+      console.log(formData)
+axios.post('/api/items/', formData, config)
     .then(res=>
         {
             dispatch({
@@ -31,8 +49,8 @@ axios.post('/api/items/')
 
 // DELETE ITEM
 
-export const deleteItem = () => dispatch =>{
-axios.delete(`/api/items/${id}`)
+export const deleteItem = (id) => (dispatch, getState) =>{
+axios.delete(`/api/items/${id}/`, tokenConfig(getState))
     .then(res=>
         {
             dispatch({

@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import datetime
 
 # Create your models here.
 class Item(models.Model):
@@ -8,5 +7,5 @@ class Item(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null = False, blank = False, related_name="items")
     score = models.IntegerField(default=0)
     verified = models.BooleanField(default=False)
-    date_posted  = models.DateField(default=datetime.now)
-    accepted = models.BooleanField()
+    date_posted  = models.DateField(auto_now_add=True)
+    accepted = models.BooleanField(default=False)

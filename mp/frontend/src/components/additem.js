@@ -19,13 +19,12 @@ static propTypes = {
 }
 
 onChange(e) {
-    this.setState({item:e.target.items[0]});
+    this.setState({item:e.target.files[0]});
 }
 
 onSubmit(e){
     e.preventDefault();
-    const item = { item }
-    this.props.addItem(item)
+    this.props.addItem(this.state.item)
     this.setState({
         file:null
     })

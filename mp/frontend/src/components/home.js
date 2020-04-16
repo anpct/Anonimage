@@ -5,12 +5,11 @@ import Add from './additem';
 class Home extends Component{
 render(){
     return(
-        <div>
-        <div className="card card-body mt-5">
-            <h1>hi</h1>
-        </div>
-        <ListItems/>
+        <div className="container">
+
         <Add/>
+        <ListItems/>
+        
         </div>
     )
 }
