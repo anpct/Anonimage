@@ -10,6 +10,7 @@ import Alerts from './alerts';
 import Admin from './Admin';
 import { HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import PrivateRoute from './privateroute';
+import AdminRoute from './AdminRoute';
 import { loadUser } from '../actions/auth'
 import { Provider as AlertProvider } from 'react-alert';
 import AlertTemplate from 'react-alert-template-basic';
@@ -35,7 +36,7 @@ class App extends Component {
       <Alerts/>
       <Switch>
         <PrivateRoute exact path='/' component={Home}/>
-        <PrivateRoute exact path='/admin' component={Admin}/>
+        <AdminRoute exact path='/admin' component={Admin}/>
         <Route exact path='/login' component={Login}/>
         <Route exact path='/register' component={Register}/>
       </Switch>
