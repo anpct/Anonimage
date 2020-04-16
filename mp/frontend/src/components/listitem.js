@@ -28,7 +28,7 @@ class ListItems extends Component {
                 <div className="card-body">
                   <p className="card-text">
                 <small>ITEM ID: {item.id}</small><br/>
-                <small>DATE ADDED: {item.date_posted}</small><br/>
+                <small>DATE ADDED: {item.date_posted.slice(0,10)}</small><br/>
                 <small>SCORE: {item.score}</small><br/>
                 <small>VERIFIED: {item.verified? <i className="fa fa-check" aria-hidden="true" style={{color: 'green'}}></i>: <i className="fa fa-times" aria-hidden="true" style={{color: 'red'}}></i>}</small><br/>
                 <small>ACCEPTED: {item.accepted? <i className="fa fa-check" aria-hidden="true" style={{color: 'green'}}></i>: <i className="fa fa-times" aria-hidden="true" style={{color: 'red'}}></i>}</small><br/>

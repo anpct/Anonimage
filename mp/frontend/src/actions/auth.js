@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_FAIL, LOGIN_SUCCESS, REGISTRATION_FAIL, REGISTRATION_SUCCESS, GET_ERRORS, LOGOUT_USER, CLEAR_DATA} from './types';
+import { USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_FAIL, LOGIN_SUCCESS, REGISTRATION_FAIL, REGISTRATION_SUCCESS, GET_ERRORS, LOGOUT_USER, CLEAR_DATA, CLEAR_V_DATA, CLEAR_ALL_DATA} from './types';
 
 export const loadUser = () => (dispatch, getState) =>{
     dispatch({type: USER_LOADING});
@@ -120,6 +120,12 @@ export const logout = () => (dispatch, getState) =>{
       });
       dispatch({
         type: CLEAR_DATA
+      });
+      dispatch({
+        type: CLEAR_V_DATA
+      });
+      dispatch({
+        type: CLEAR_ALL_DATA
       });
     }
     )

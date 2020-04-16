@@ -34,8 +34,9 @@ export class Admin extends Component {
                      <div className="card-body">
                        <p className="card-text">
                      <small>ITEM ID: {item.id}</small><br/>
-                     <small>DATE ADDED: {item.date_posted}</small><br/>
+                     <small>DATE ADDED: {item.date_posted.slice(0,10)}</small><br/>
                      <small>SCORE: {item.score}</small><br/><br/>
+                     </p>
                      <div className="row" align="center">
                         <div className="col">
                         <button
@@ -52,7 +53,7 @@ export class Admin extends Component {
                         </button>
                         </div>
                       </div>
-                      </p>
+                      
                      </div>
                    </div>
                    </div>

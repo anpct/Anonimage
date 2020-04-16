@@ -15,3 +15,6 @@ export const CLEAR_DATA = "CLEAR_DATA";
 export const GET_V_ITEMS = "GET_V_ITEMS";
 export const ACCEPT_ITEM = "ACCEPT_ITEM";
 export const REJECT_ITEM = "REJECT_ITEM";
+export const GET_ALL_ITEMS = "GET_ALL_ITEMS";
+export const CLEAR_V_DATA = "CLEAR_V_DATA";
+export const CLEAR_ALL_DATA = "CLEAR_ALL_DATA";

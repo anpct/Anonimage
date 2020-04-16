@@ -17,10 +17,13 @@ render(){
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-        <a className="navbar-brand" href="#">ANP</a>
+        <a className="navbar-brand">ANONIMAGE</a>
       { this.props.isAuthenticated?
         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul className="navbar-nav ml-auto">
+          <li className="nav-item">
+              <Link to='/all' className="nav-link">Explore</Link>
+            </li>
             <li className="nav-item">
             <button onClick={this.props.logout} className="btn btn-link">
             Logout

@@ -8,4 +8,3 @@ class ItemSerializer(serializers.ModelSerializer):
         fields = ['id','item', 'score', 'verified', 'date_posted', 'accepted']
         
     
-

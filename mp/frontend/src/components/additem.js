@@ -46,6 +46,7 @@ render(){
               multiple={false}
               accept=".jpg,.png,.jpeg"
               required
+              style={{ padding:2 }}
             />
           </div>
           <div className="form-group">
