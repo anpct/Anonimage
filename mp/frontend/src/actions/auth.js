@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_FAIL, LOGIN_SUCCESS} from './types';
+import { USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_FAIL, LOGIN_SUCCESS, REGISTRATION_FAIL, REGISTRATION_SUCCESS} from './types';
 
 export const loadUser = () => (dispatch, getState) =>{
     dispatch({type: USER_LOADING});
@@ -56,6 +56,32 @@ export const login = (username, password) => (dispatch) =>{
         })
     
 } 
+
+export const register = (username, email, password) => (dispatch) =>{
+  
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  const body = JSON.stringify({ username, email, password });
+
+  axios
+  .post('/auth/register/', body, config)
+  .then((res) => {
+    dispatch({
+      type: REGISTRATION_SUCCESS,
+      payload: res.data,
+    })
+  })
+  .catch((err) => {
+    dispatch({
+      type: REGISTRATION_FAIL,
+    });
+  })
+
+}
 
 export const tokenConfig = (getState) => {
   // Get token from state
