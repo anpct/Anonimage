@@ -21,7 +21,7 @@ render(){
       { this.props.isAuthenticated?
         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item active">
+            <li className="nav-item">
             <button onClick={this.props.logout} className="btn btn-link">
             Logout
           </button>
@@ -30,7 +30,7 @@ render(){
         </div>:
         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item active">
+            <li className="nav-item">
               <Link to='/register' className="nav-link">Register</Link>
             </li>
             <li className="nav-item">

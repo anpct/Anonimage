@@ -8,29 +8,32 @@ import { Redirect } from 'react-router-dom';
 class Home extends Component{
 
     static propTypes = {
-        admin: PropTypes.object
+        user: PropTypes.object
       }
 
 
 render(){
-    if(this.props.admin.is_staff)
+    if(this.props.user.is_staff)
         {
           return <Redirect to="/admin"/>
         }
 
     return(
         <div className="container">
-
+        <div>
+        <div className="card card-body mt-4 mb-4" style={{alignItems: 'center'}}>
+        <h3>Welcome {this.props.user.username}</h3>
+        </div>
+        </div>
         <Add/>
         <ListItems/>
-        
         </div>
     )
 }
 }
 
 const mapStateToProps = state =>({
-    admin: state.auth.user
+    user: state.auth.user
   })
 
 export default connect(mapStateToProps)(Home)
