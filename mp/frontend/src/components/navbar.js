@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class Navbar extends Component{
+
+static propTypes ={
+  isAuthenticated: PropTypes.bool
+}
 render(){
     return(
         <nav className="navbar navbar-expand-sm navbar-light bg-light">
@@ -10,7 +16,8 @@ render(){
           <span className="navbar-toggler-icon"></span>
         </button>
         <a className="navbar-brand" href="#">ANP</a>
-      
+      { this.props.isAuthenticated?
+        <div/>:
         <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
             <li className="nav-item active">
@@ -21,9 +28,15 @@ render(){
             </li>
           </ul>
         </div>
+      }
         </div>
       </nav>
     )
 }
 }
-export default Navbar
+
+
+const mapStateToProps = (state) =>({
+  isAuthenticated: state.auth.isAuthenticated
+})
+export default connect(mapStateToProps)(Navbar)

@@ -22,8 +22,8 @@ class ListItems extends Component {
         <h2>Items</h2>
         <div className="row">
             {this.props.items.map((item) => (
-              <div class="col" style={{padding: 10}}>
-              <div className="card" key={item.id} style={{width: "16rem"}}>
+              <div className="col" style={{padding: 10}} key={item.id}>
+              <div className="card" style={{width: "16rem"}}>
                 <img src={item.item} className="card-img-top" alt="..." style={{width: "16rem", height: "16rem"}}/>
                 <div className="card-body">
                   <p className="card-text">

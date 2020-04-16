@@ -28,6 +28,7 @@ onSubmit(e){
     this.setState({
         file:null
     })
+
 }
 
 render(){
@@ -42,6 +43,8 @@ render(){
               type="file"
               name="file"
               onChange={this.onChange}
+              multiple={false}
+              accept=".jpg,.png,.jpeg"
             />
           </div>
           <div className="form-group">
