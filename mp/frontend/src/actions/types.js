@@ -12,3 +12,6 @@ export const GET_ERRORS = "GET_ERRORS";
 export const GET_MESSAGES = "GET_MESSAGES";
 export const LOGOUT_USER = "LOGOUT_USER";
 export const CLEAR_DATA = "CLEAR_DATA";
+export const GET_V_ITEMS = "GET_V_ITEMS";
+export const ACCEPT_ITEM = "ACCEPT_ITEM";
+export const REJECT_ITEM = "REJECT_ITEM";

@@ -13,6 +13,7 @@ class UserAPI(generics.RetrieveAPIView):
     def get_object(self):
         return self.request.user
     
+    
 # Register API
 class RegisterAPI(generics.GenericAPIView):
   serializer_class = RegisterSerializer

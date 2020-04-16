@@ -7,4 +7,5 @@ class ItemSerializer(serializers.ModelSerializer):
         model = Item
         fields = ['id','item', 'score', 'verified', 'date_posted', 'accepted']
         
+    
 

@@ -19,7 +19,5 @@ class ItemViewSet(viewsets.ModelViewSet):
 class AdminItemViewSet(viewsets.ModelViewSet):
     serializer_class = ItemSerializer
     permission_classes = ( IsAdminUser, )
-    
-    def get_queryset(self):
-        return Item.objects.filter(verified = False)
+    queryset = Item.objects.all().filter(verified = False)
     
