@@ -184,6 +184,7 @@ from django.dispatch import receiver
 
 @receiver(post_save, sender=Item)
 def score(sender, instance, created, **kwargs):
-    score = abs(100-calc(instance.item))
-    up = Item.objects.filter(id=instance.id).update(score=score)
+    if created:
+        score = abs(100-calc(instance.item))
+        up = Item.objects.filter(id=instance.id).update(score=score)
     

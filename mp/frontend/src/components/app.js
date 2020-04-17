@@ -7,6 +7,7 @@ import Home from './home';
 import Login from './login';
 import Register from './register';
 import Alerts from './alerts';
+import Loader from './Loader'
 import All from './All';
 import Admin from './Admin';
 import { HashRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
@@ -35,6 +36,7 @@ class App extends Component {
       <Router >
       <Navbar/>
       <Alerts/>
+      
       <Switch>
         <PrivateRoute exact path='/' component={Home}/>
         <PrivateRoute exact path='/all' component={All}/>
@@ -42,6 +44,7 @@ class App extends Component {
         <Route exact path='/login' component={Login}/>
         <Route exact path='/register' component={Register}/>
       </Switch>
+      <Loader/>
      </Router>
      </Fragment>
      </AlertProvider>

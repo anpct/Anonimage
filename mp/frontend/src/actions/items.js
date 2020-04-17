@@ -1,18 +1,24 @@
 import axios from 'axios';
-import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, GET_ERRORS, GET_MESSAGES } from './types';
+import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, GET_ERRORS, GET_MESSAGES, SET_LOADER } from './types';
 import { tokenConfig } from './auth';
 
 
 // GET ITEMS
 
 export const getItems = () => (dispatch, getState) =>{
+    dispatch({
+        type: SET_LOADER
+      });
 axios.get('/api/items/', tokenConfig(getState))
     .then(res=>
         {
             dispatch({
                 type: GET_ITEMS,
                 payload: res.data
-            })
+            });
+            dispatch({
+                type: SET_LOADER
+              });
         })
     .catch(err => console.log(err))
 }
@@ -35,7 +41,9 @@ export const addItem = (item) => (dispatch, getState) =>{
 
       const formData = new FormData();
       formData.append('item',item);
-      console.log(formData)
+      dispatch({
+        type: SET_LOADER
+      });
 axios.post('/api/items/', formData, config)
     .then(res=>
         {
@@ -48,6 +56,9 @@ axios.post('/api/items/', formData, config)
                 type: GET_MESSAGES,
                 payload: "ITEM ADDED"
             });
+            dispatch({
+                type: SET_LOADER
+              });
         })
     .catch(err => {
         const errors = {
@@ -58,13 +69,21 @@ axios.post('/api/items/', formData, config)
     dispatch({
         type: GET_ERRORS,
         payload: errors
-    })}
+    });
+    dispatch({
+        type: SET_LOADER
+      });
+}
     )
 }
 
 // DELETE ITEM
 
 export const deleteItem = (id) => (dispatch, getState) =>{
+
+    dispatch({
+        type: SET_LOADER
+      });
 axios.delete(`/api/items/${id}/`, tokenConfig(getState))
     .then(res=>
         {
@@ -77,6 +96,10 @@ axios.delete(`/api/items/${id}/`, tokenConfig(getState))
                 type: GET_MESSAGES,
                 payload: "ITEM DELETED"
             });
+
+            dispatch({
+                type: SET_LOADER
+              });
         })
     .catch(err => console.log(err))
 }

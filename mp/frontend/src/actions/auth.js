@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_FAIL, LOGIN_SUCCESS, REGISTRATION_FAIL, REGISTRATION_SUCCESS, GET_ERRORS, LOGOUT_USER, CLEAR_DATA, CLEAR_V_DATA, CLEAR_ALL_DATA} from './types';
+import { USER_LOADED, USER_LOADING, AUTH_ERROR, LOGIN_FAIL, LOGIN_SUCCESS, REGISTRATION_FAIL, REGISTRATION_SUCCESS, GET_ERRORS, LOGOUT_USER, CLEAR_DATA, CLEAR_V_DATA, CLEAR_ALL_DATA, SET_LOADER } from './types';
 
 export const loadUser = () => (dispatch, getState) =>{
     dispatch({type: USER_LOADING});
@@ -15,17 +15,26 @@ export const loadUser = () => (dispatch, getState) =>{
     if(token){
         config.header['Authorization'] = `Token ${token}`;
     }
+    dispatch({
+      type: SET_LOADER
+    });
     axios.get('/auth/user/', tokenConfig(getState))
         .then(res => {
             dispatch({
                 type: USER_LOADED,
                 payload: res.data
-            })
+            });
+            dispatch({
+              type: SET_LOADER
+            });
         })
         .catch(error => {
             dispatch({
                 type: AUTH_ERROR
-            })
+            });
+            dispatch({
+              type: SET_LOADER
+            });
         })
 } 
 
@@ -40,6 +49,10 @@ export const login = (username, password) => (dispatch) =>{
     
       // Request Body
       const body = JSON.stringify({ username, password });
+
+      dispatch({
+        type: SET_LOADER
+      });
     
       axios
         .post('/auth/login/', body, config)
@@ -47,7 +60,10 @@ export const login = (username, password) => (dispatch) =>{
           dispatch({
             type: LOGIN_SUCCESS,
             payload: res.data,
-          })
+          });
+          dispatch({
+            type: SET_LOADER
+          });
         })
         .catch((err) => {
           dispatch({
@@ -60,6 +76,9 @@ export const login = (username, password) => (dispatch) =>{
           dispatch({
             type: GET_ERRORS,
             payload: error
+          });
+          dispatch({
+            type: SET_LOADER
           });
         })
     
@@ -85,6 +104,10 @@ export const register = (username, email, password, password2) => (dispatch) =>{
     return;
   }
 
+  dispatch({
+    type: SET_LOADER
+  });
+
   const body = JSON.stringify({ username, email, password });
 
   axios
@@ -93,7 +116,10 @@ export const register = (username, email, password, password2) => (dispatch) =>{
     dispatch({
       type: REGISTRATION_SUCCESS,
       payload: res.data,
-    })
+    });
+    dispatch({
+      type: SET_LOADER
+    });
   })
   .catch((err) => {
     dispatch({
@@ -107,11 +133,18 @@ export const register = (username, email, password, password2) => (dispatch) =>{
       type: GET_ERRORS,
       payload: error
     });
+    dispatch({
+      type: SET_LOADER
+    });
   })
 
 }
 
 export const logout = () => (dispatch, getState) =>{
+
+  dispatch({
+    type: SET_LOADER
+  });
   axios.post('/auth/logout/', null, tokenConfig(getState))
     .then(
       res =>{
@@ -126,6 +159,9 @@ export const logout = () => (dispatch, getState) =>{
       });
       dispatch({
         type: CLEAR_ALL_DATA
+      });
+      dispatch({
+        type: SET_LOADER
       });
     }
     )

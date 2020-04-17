@@ -5,6 +5,7 @@ import errors from './errors';
 import messages from './messages';
 import v_items from './v_items';
 import all from './all';
+import loader from './loader'
 
 export default combineReducers({
     items,
@@ -12,5 +13,6 @@ export default combineReducers({
     errors,
     messages,
     v_items,
-    all
+    all,
+    loader
 });
