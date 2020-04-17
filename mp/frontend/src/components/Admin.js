@@ -30,7 +30,9 @@ export class Admin extends Component {
                  {this.props.items.map((item) => (
                    <div className="col" style={{padding: 10}} key={item.id}>
                    <div className="card" style={{width: "16rem"}}>
+                   <a href={item.item} target="_blank">
                      <img src={item.item} className="card-img-top" alt="..." style={{width: "16rem", height: "16rem"}}/>
+                     </a>
                      <div className="card-body">
                        <p className="card-text">
                      <small>ITEM ID: {item.id}</small><br/>
