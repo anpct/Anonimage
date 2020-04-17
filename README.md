@@ -48,26 +48,30 @@ $ python manage.py runserver
 ```
 ### Screenshots
 
-Execution
+###### Execution
 ![Execution](https://i.ibb.co/X3zd4V9/execution.png)
 
-Login
+###### Login
 ![Login](https://i.ibb.co/yX6DP9L/login.png)
 
-Register
+###### Register
 ![Register](https://i.ibb.co/XLXvFg7/register.png)
 
-User dashboard
+###### User dashboard
 ![dash1](https://i.ibb.co/jDK6kHQ/dash1.png)
 ---
 ![dash2](https://i.ibb.co/94c1D0r/dash2.png)
 
-Admin dashboard
+###### Admin dashboard
 ![dash](https://i.ibb.co/NjFW07C/admin.png)
 
-Explore
+###### Explore
 ![explore](https://i.ibb.co/2Nrhm9d/explore.png)
 License
 ----
 
 MIT
+
+
+
+ 
