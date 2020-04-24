@@ -20,6 +20,7 @@ static propTypes = {
 
 onChange(e) {
     this.setState({item:e.target.files[0]});
+    console.log(this.state.item)
 }
 
 onSubmit(e){
