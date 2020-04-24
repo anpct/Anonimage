@@ -5,7 +5,7 @@ from django.utils import timezone
 class Item(models.Model):
     item = models.ImageField(upload_to = "items",null = False, blank = False)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, null = False, blank = False, related_name="items")
-    score = models.IntegerField(default=0)
+    score = models.DecimalField(max_digits=5, decimal_places=5, default=0, null = True, blank=True)
     verified = models.BooleanField(default=False)
     date_posted  = models.DateTimeField(default=timezone.now)
     accepted = models.BooleanField(default=False)
