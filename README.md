@@ -4,7 +4,7 @@ Anonimage is a mobile friendly web app that uses machine learning to assess the 
 
 ### Concept
 
-A user first makes an account in the web app, after making an account the user is able to upload images to the web app. Once an image is uploaded the BRISQUE score of the image is automatically calculated, this image is not yet available to be viewed by other users. Other users can view the images only on approval by the admin. On logging in the admin is given a set of images to approve or reject. If the admin approves the image, then the image is available to be viewed by every user in the explore tab.
+A user first makes an account in the web app, after making an account the user is able to upload images to the web app. Once an image is uploaded the quality score of the image is automatically calculated, this image is not yet available to be viewed by other users. Other users can view the images only on approval by the admin. On logging in the admin is given a set of images to approve or reject. If the admin approves the image, then the image is available to be viewed by every user in the explore tab.
 
 ### Tech
 
@@ -12,7 +12,6 @@ Anonimage uses a number of open source projects to work properly:
 
 * ReactJs for the frontend
 * Django for the backend
-* BRISQUE for image quality assessment
 * Redux for state management
 
 ### Installation
