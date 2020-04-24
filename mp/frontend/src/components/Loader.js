@@ -17,7 +17,7 @@ export class Loader extends Component {
         return (
             <div style={{position:'fixed', top: 0, width: '100%', height:'100%', display: "flex", backgroundColor:'#F8F8F8AD',justifyContent: "center", alignItems: "center"}}>
             <div style={{alignContent: 'center', alignItems: 'center', alignSelf: 'center'}}>
-              <img src="https://media.giphy.com/media/xThta6TFeC2j229JNm/giphy.gif"></img>
+              <img src="https://media.giphy.com/media/JpSOxF7CZv4SSRGQea/200w_d.gif"></img>
             </div>
           </div>
         )
