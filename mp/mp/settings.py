@@ -25,7 +25,7 @@ SECRET_KEY = '&n=d7om8-7n2yz%(-(p$&hq3hf530a_-^=t=$hn3(bcm)e52*%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['13.127.165.186', 'anonimage.ml']
+ALLOWED_HOSTS = ['13.126.242.231', 'anonimage.ml']
 
 
 # Application definition
