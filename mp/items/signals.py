@@ -65,9 +65,8 @@ def calculateScore(img):
     blur = get_blur(image)
     sharpness = get_sharpness(image)
     arr = [luminance, red, green, blue, gray_var, red_var, green_var, blue_var, dist_pixel_rate, colorfulness, saturation, blur, sharpness]
-    loaded_model = pickle.load(open("C:\\Users\\anthi\\Desktop\\test\\model1.sav", 'rb'))
+    loaded_model = pickle.load(open("mp\\static\\frontend\\ml\\model1.sav", 'rb'))
     ans = loaded_model.predict(np.array(arr).reshape(1, -1))
-    print(ans[0])
     return ans[0]
 
 
