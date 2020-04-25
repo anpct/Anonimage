@@ -1,7 +1,9 @@
 import numpy as np
 import cv2
 import pickle
-
+import os
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.conf import settings
 
 #1. grayscale rgb mean and variance
 def get_pixel_summary(img):
@@ -65,7 +67,8 @@ def calculateScore(img):
     blur = get_blur(image)
     sharpness = get_sharpness(image)
     arr = [luminance, red, green, blue, gray_var, red_var, green_var, blue_var, dist_pixel_rate, colorfulness, saturation, blur, sharpness]
-    loaded_model = pickle.load(open("mp\\static\\frontend\\ml\\model1.sav", 'rb'))
+    url = staticfiles_storage.path('frontend/ml/model1.sav')
+    loaded_model = pickle.load(open(url, 'rb'))
     ans = loaded_model.predict(np.array(arr).reshape(1, -1))
     return ans[0]
 
