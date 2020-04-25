@@ -72,6 +72,16 @@ def calculateScore(img):
     ans = loaded_model.predict(np.array(arr).reshape(1, -1))
     return ans[0]
 
+import threading
+class LikeThread(threading.Thread):
+    def __init__(self, instance, **kwargs):
+        self.instance = instance
+        super(LikeThread, self).__init__(**kwargs)
+
+    def run(self):
+        score = calculateScore(self.instance.item.file)
+        score = round(score,4)
+        up = Item.objects.filter(id=self.instance.id).update(score=score)
 
 from .models import Item
 from django.db.models.signals import post_save
@@ -80,8 +90,4 @@ from django.dispatch import receiver
 @receiver(post_save, sender=Item)
 def score(sender, instance, created, **kwargs):
     if created:
-        score = calculateScore(instance.item.file)
-        score = round(score,4)
-        print(score)
-        up = Item.objects.filter(id=instance.id).update(score=score)
-    
+      LikeThread(instance).start()

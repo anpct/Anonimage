@@ -54,7 +54,7 @@ axios.post('/api/items/', formData, config)
 
             dispatch({
                 type: GET_MESSAGES,
-                payload: "ITEM ADDED"
+                payload: "ITEM ADDED, PLEASE REFRESH IN SOMETIME FOR RESULTS"
             });
             dispatch({
                 type: SET_LOADER
