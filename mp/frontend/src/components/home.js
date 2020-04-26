@@ -25,7 +25,7 @@ render(){
         <h3>Welcome {this.props.user.username}</h3>
         </div>
         <div className="card card-body mt-4 mb-4" style={{alignItems: 'center'}}>
-        <h3>The scores range from 0 to 1 (zero being the best and 1 being the worst)</h3>
+        <h3>The scores range from 0 to 1 (0 being the best and 1 being the worst)</h3>
         </div>
         </div>
         <Add/>
