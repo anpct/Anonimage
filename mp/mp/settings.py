@@ -25,7 +25,7 @@ SECRET_KEY = '&n=d7om8-7n2yz%(-(p$&hq3hf530a_-^=t=$hn3(bcm)e52*%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['104.45.154.56', 'anonimage.ml']
+ALLOWED_HOSTS = ['104.45.154.56', 'anonimage.ml', '*']
 
 
 # Application definition
@@ -49,7 +49,6 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
