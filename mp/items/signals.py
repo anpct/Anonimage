@@ -69,7 +69,9 @@ def calculateScore(img):
     arr = [luminance, red, green, blue, gray_var, red_var, green_var, blue_var, dist_pixel_rate, colorfulness, saturation, blur, sharpness]
     url = staticfiles_storage.path('frontend/ml/model1.sav')
     loaded_model = pickle.load(open(url, 'rb'))
-    ans = loaded_model.predict(np.array(arr).reshape(1, -1))
+    na = np.array(arr).reshape(1, -1)
+    print(na)
+    ans = loaded_model.predict(na)
     return ans[0]
 
 import threading
