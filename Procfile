@@ -1,1 +1,1 @@
-web: gunicorn mp.mp.wsgi
+web: gunicorn mp.mp.wsgi --preload
