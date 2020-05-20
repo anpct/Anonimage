@@ -1,1 +1,1 @@
-web: gunicorn Faculty_Responses.wsgi
+web: gunicorn mp.wsgi
