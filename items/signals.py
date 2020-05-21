@@ -58,8 +58,23 @@ def get_sharpness(img):
   sharpness = np.average(gnorm)
   return sharpness
 
+# import the necessary packages
+import numpy as np
+import urllib.request as urllib
+import cv2
+# METHOD #1: OpenCV, NumPy, and urllib
+def url_to_image(url):
+	# download the image, convert it to a NumPy array, and then read
+	# it into OpenCV format
+	resp = urllib.urlopen(url)
+	image = np.asarray(bytearray(resp.read()), dtype="uint8")
+	image = cv2.imdecode(image, cv2.IMREAD_COLOR)
+	# return the image
+	return image
+
 def calculateScore(img):
-    image = cv2.imread(img.name)
+    print(settings.MEDIA_URL+img.name)
+    image = url_to_image(settings.MEDIA_URL+img.name)
     luminance, red, green, blue, gray_var, red_var, green_var, blue_var = get_pixel_summary(image)
     dist_pixel_rate = get_dist_pixel_rate(image)
     colorfulness = image_colorfulness(image)
