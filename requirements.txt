@@ -22,7 +22,7 @@ matplotlib==3.2.1
 mysqlclient==1.4.6
 networkx==2.4
 numpy==1.18.2
-opencv-contrib-python==4.2.0.34
+opencv-contrib-python-headless==4.2.0.34
 Pillow==7.1.1
 pycparser==2.20
 pyparsing==2.4.7
