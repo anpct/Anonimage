@@ -25,7 +25,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['anonimage.ml', 'www.anonimage.ml']
+ALLOWED_HOSTS = ['anonimage.ml', 'www.anonimage.ml', 'anonimage.herokuapp.com', 'www.anonimage.herokuapp.com']
 
 
 # Application definition
