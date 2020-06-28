@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['anonimage.ml', 'www.anonimage.ml', 'anonimage.herokuapp.com', 
 # Application definition
 
 INSTALLED_APPS = [
+    'storages',
     'django_cleanup.apps.CleanupConfig',
     'frontend',
     'knox',
