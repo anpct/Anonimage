@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@fortawesome/react-fontawesome": "^0.1.9",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "bootstrap": "^4.4.1",
     "lightbox2": "^2.11.1",
